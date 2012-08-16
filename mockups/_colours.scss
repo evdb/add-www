@@ -1,0 +1,10 @@
+//
+// Colours
+// 
+
+$text_colour: #333;
+
+$primary_colour:            #f90;
+$primary_colour_dark:       darken( $primary_colour, 5% );
+$primary_colour_light:      lighten($primary_colour, 25%);
+$primary_colour_very_light: lighten($primary_colour, 42%);

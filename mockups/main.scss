@@ -1,0 +1,72 @@
+/* PopIt */
+
+@import "reset";
+@import "colours";
+
+body {
+    color: $text_colour;    
+    font-family: Arial;
+}
+
+a {
+    color: $primary_colour;
+}
+
+menu {
+  li {
+    display: inline;
+    list-style: none;
+    padding-left: 0.5em;
+  }
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+h1 { font-size: 200%; }
+h2 { font-size: 150%; }
+
+h1, h2, p {
+  margin-top: 1em;
+}
+
+header {
+  
+  padding: 1em;
+  background: $primary_colour_very_light;
+  border-bottom: 1px solid $primary_colour_light;
+  
+  #logo {
+    a {
+      text-decoration: none;
+      font-size: 200%;
+      font-weight: bold;
+
+      span.tld {
+        font-size: 50%;
+      }
+    }
+  }
+
+  menu {
+    float: right;
+  }
+  
+}
+
+#content {
+  padding: 1em;
+}
+
+footer {
+  
+  padding: 1em;
+  background: $primary_colour_very_light;
+  border: 1px solid $primary_colour_light;
+  border-width: 1px 0;
+
+  font-size: 80%;
+  text-align: center;
+
+}
