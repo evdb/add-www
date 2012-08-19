@@ -36,6 +36,7 @@ header {
   
   #logo {
     padding: 1em;
+    float: left;
 
     a {
       text-decoration: none;
@@ -47,8 +48,14 @@ header {
       }
     }
   }
+  
+  #domain-search {
+    padding: 1em;
+    float: right;
+  }
 
   menu {
+    clear: both;
     padding: 0.5em 1em;
     background: $primary_colour_very_light;
     border-bottom: 1px solid $primary_colour_light;
