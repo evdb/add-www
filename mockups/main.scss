@@ -16,7 +16,8 @@ menu {
   li {
     display: inline;
     list-style: none;
-    padding-left: 0.5em;
+    padding-right: 1em;
+    
   }
 }
 
@@ -33,11 +34,9 @@ h1, h2, p {
 
 header {
   
-  padding: 1em;
-  background: $primary_colour_very_light;
-  border-bottom: 1px solid $primary_colour_light;
-  
   #logo {
+    padding: 1em;
+
     a {
       text-decoration: none;
       font-size: 200%;
@@ -50,7 +49,10 @@ header {
   }
 
   menu {
-    float: right;
+    padding: 0.5em 1em;
+    background: $primary_colour_very_light;
+    border-bottom: 1px solid $primary_colour_light;
+    border-top: 1px solid $primary_colour_light;
   }
   
 }
