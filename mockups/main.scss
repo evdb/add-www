@@ -16,7 +16,7 @@ menu {
   li {
     display: inline;
     list-style: none;
-    padding-right: 1em;
+    padding: 0 0.5em;
     
   }
 }
@@ -30,6 +30,11 @@ h2 { font-size: 150%; }
 
 h1, h2, p {
   margin-top: 1em;
+}
+
+.tt {
+  font-weight: bold;
+  font-family: Monaco, Courier, monospace;
 }
 
 header {
@@ -60,6 +65,10 @@ header {
     background: $primary_colour_very_light;
     border-bottom: 1px solid $primary_colour_light;
     border-top: 1px solid $primary_colour_light;
+
+    li {
+      padding: 0 1em 0 0;
+    }
   }
   
 }

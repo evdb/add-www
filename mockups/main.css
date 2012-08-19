@@ -65,7 +65,7 @@ a {
 menu li {
   display: inline;
   list-style: none;
-  padding-right: 1em;
+  padding: 0 0.5em;
 }
 
 h1, h2 {
@@ -82,6 +82,11 @@ h2 {
 
 h1, h2, p {
   margin-top: 1em;
+}
+
+.tt {
+  font-weight: bold;
+  font-family: Monaco, Courier, monospace;
 }
 
 header #logo {
@@ -106,6 +111,9 @@ header menu {
   background: #ffefd6;
   border-bottom: 1px solid #ffcc80;
   border-top: 1px solid #ffcc80;
+}
+header menu li {
+  padding: 0 1em 0 0;
 }
 
 #content {
