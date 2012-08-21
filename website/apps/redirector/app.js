@@ -33,7 +33,7 @@ app.get('*', function (req, res) {
     from_domain:       req.host, // strip port number
     redirect_delay:    config.general.redirect_delay,
     sales_site_name:   config.sales_app.name,
-    sales_site_domain: config.sales_app.host,
+    sales_site_domain: config.sales_app.hostport,
   });
   res.render('free.ejs');
 });

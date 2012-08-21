@@ -6,7 +6,8 @@ module.exports = {
     port: 3000,
   },
   sales_app: {
-    name:   'add-www.com',
-    host:   'www.127-0-0-1.org.uk',
+    name:     'add-www.com',
+    host:     'www.127-0-0-1.org.uk',
+    hostport: 'www.127-0-0-1.org.uk:3000',
   },
 };
