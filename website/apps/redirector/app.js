@@ -28,6 +28,7 @@ app.all('*', function (req, res) {
 
   var host = req.get('Host');
 
+  // Set up some values that all pages need
   res.locals({
     to_domain:         'www.' + host,
     from_domain:       req.host, // strip port number
@@ -36,7 +37,11 @@ app.all('*', function (req, res) {
     sales_site_domain: config.sales_app.baseUrl,
   });
 
-  res.render('free.ejs');
+  // Check that we are not in what appears to be a redirection loop
+  if ( /^www\./.test( req.host) ) {
+    return res.render('loop_error');
+  }
+
+  res.render('free');
 
 });
-

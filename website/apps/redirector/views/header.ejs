@@ -3,7 +3,9 @@
     <head>
         <title><%= title %></title>
 
-        <meta http-equiv="refresh" content="<%= redirect_delay %>;URL='http://<%= to_domain %>'">
+        <% if ( should_meta_redirect ) { %>
+            <meta http-equiv="refresh" content="<%= redirect_delay %>;URL='http://<%= to_domain %>'">
+        <% } %>
 
         <style>
             <% include styles.css %>

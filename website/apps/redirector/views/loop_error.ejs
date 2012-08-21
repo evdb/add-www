@@ -1,0 +1,16 @@
+<%
+    var title = "Redirection Error Detected";
+    var should_meta_redirect = false;
+%>
+
+<% include header %>
+
+		<h1><%= title %></h1>
+
+        <p>To prevent you sitting in an infinite loop we will not redirect you to <a href="http://<%= to_domain %>/">http://<%= to_domain %>/</a>. </p>
+
+        <p>You are probably seeing this error because your DNS configuration is incorrect - see <a id="domain_status" href="http://<%= sales_site_domain %>/domain/<%= from_domain %>">our <%= from_domain %> domain status page for more information</a> </p>
+
+        <p>Redirection service provided by <a href="http://<%= sales_site_domain %>/"><%= sales_site_name %></a>. </p>
+
+<% include footer %>

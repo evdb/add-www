@@ -34,4 +34,13 @@ class Redirection < WatirTestCase
     
   end
 
+  def test_redirection_loops_are_caught
+
+    www_url     = make_url 'www.testing'
+    goto www_url
+    assert_equal @b.url, www_url
+    assert @b.h1.text == "Redirection Error Detected"
+
+  end
+
 end

@@ -20,7 +20,6 @@ class WatirTestCase < Test::Unit::TestCase
 
     # create the browser and go to the homepage
     @b = Watir::Browser.new :chrome
-    @b.goto make_url
   end
 
   def teardown
