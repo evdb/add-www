@@ -24,7 +24,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('*', function (req, res) {
+app.all('*', function (req, res) {
 
   var host = req.get('Host');
 
@@ -33,8 +33,10 @@ app.get('*', function (req, res) {
     from_domain:       req.host, // strip port number
     redirect_delay:    config.general.redirect_delay,
     sales_site_name:   config.sales_app.name,
-    sales_site_domain: config.sales_app.hostport,
+    sales_site_domain: config.sales_app.baseUrl,
   });
+
   res.render('free.ejs');
+
 });
 

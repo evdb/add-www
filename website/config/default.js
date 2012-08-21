@@ -8,6 +8,6 @@ module.exports = {
   sales_app: {
     name:     'add-www.com',
     host:     'www.127-0-0-1.org.uk',
-    hostport: 'www.127-0-0-1.org.uk:3000',
+    baseUrl: 'www.127-0-0-1.org.uk:3000',
   },
 };
