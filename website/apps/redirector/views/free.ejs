@@ -35,17 +35,16 @@
         <script type="text/javascript">
 
             var timeRemaining = <%= redirect_delay %>;
-            var countdown = document.getElementById('countdown');
-
             var intervalId = setInterval(
                 function () {
                     timeRemaining--;
                     if (timeRemaining <= 0) clearInterval( intervalId );
                     
                     var string = 'in ' + timeRemaining + ' seconds';
-                    if (timeRemaining == 1 ) string = 'in 1 second';
-                    if ( timeRemaining == 0 ) string = 'now';
+                    if ( timeRemaining == 1 ) string = 'in 1 second';
+                    if ( timeRemaining <= 0 ) string = 'now';
                     
+                    var countdown = document.getElementById('countdown');
                     countdown.innerHTML = string;                
                 },
                 1000
