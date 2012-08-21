@@ -10,5 +10,8 @@
     "ejs":          ">= 0.8.2",
     "connect":      ">= 2.4.3",
     "config":       ">= 0.4.16"
+  },
+  "devDependencies": {
+    "supervisor": "*"
   }
 }
