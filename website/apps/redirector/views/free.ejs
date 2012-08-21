@@ -1,19 +1,9 @@
-<html>
+<%
+    var title = "Redirecting you to http://" + to_domain + "/";
+%>
 
-    <head>
-        <title>Redirecting you to http://<%= to_domain %>/</title>
+<% include header %>
 
-        <meta http-equiv="refresh" content="<%= redirect_delay %>;URL='http://<%= to_domain %>'">
-
-        <style>
-            <% include styles.css %>
-        </style>
-    </head>
-
-	<body>
-	    
-	    <table><tr><td>
-	    
 		<h1>
 		    <a href="http://<%= to_domain %>/">http://<%= to_domain %>/</a>
 		</h1>
@@ -30,8 +20,6 @@
             You can <a id="domain_status" href="http://<%= sales_site_domain %>/domain/<%= from_domain %>">make this redirect instant</a>.
         </p>
 
-        </td></tr></table>
-    
         <script type="text/javascript">
 
             var timeRemaining = <%= redirect_delay %>;
@@ -52,5 +40,5 @@
             
             
         </script>
-	</body>
-</html>
+
+<% include footer %>
