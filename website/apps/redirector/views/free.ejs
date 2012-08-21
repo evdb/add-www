@@ -1,0 +1,57 @@
+<html>
+
+    <head>
+        <title>Redirecting you to http://<%= to_domain %>/</title>
+
+        <meta http-equiv="refresh" content="<%= redirect_delay %>;URL='http://<%= to_domain %>'">
+
+        <style>
+            <% include styles.css %>
+        </style>
+    </head>
+
+	<body>
+	    
+	    <table><tr><td>
+	    
+		<h1>
+		    <a href="http://<%= to_domain %>/">http://<%= to_domain %>/</a>
+		</h1>
+
+		<h2>
+		    Redirecting <span id="countdown">in <%= redirect_delay %> seconds</span>.
+		</h2>
+
+        <p>
+            Redirection service provided by <a href="http://<%= sales_site_domain %>/"><%= sales_site_name %></a>.
+        </p>
+
+        <p>
+            You can <a href="http://<%= sales_site_domain %>/domain/<%= from_domain %>">make this redirect instant</a>.
+        </p>
+
+        </td></tr></table>
+    
+        <script type="text/javascript">
+
+            var timeRemaining = <%= redirect_delay %>;
+            var countdown = document.getElementById('countdown');
+
+            var intervalId = setInterval(
+                function () {
+                    timeRemaining--;
+                    if (timeRemaining <= 0) clearInterval( intervalId );
+                    
+                    var string = 'in ' + timeRemaining + ' seconds';
+                    if (timeRemaining == 1 ) string = 'in 1 second';
+                    if ( timeRemaining == 0 ) string = 'now';
+                    
+                    countdown.innerHTML = string;                
+                },
+                1000
+            );
+            
+            
+        </script>
+	</body>
+</html>

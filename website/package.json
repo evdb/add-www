@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "add-www.com",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "express":      ">= 3",
-    "jade":         ">= 0.27.2",
+    "ejs":          ">= 0.8.2",
     "connect":      ">= 2.4.3",
     "config":       ">= 0.4.16"
   }
