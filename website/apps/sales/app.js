@@ -22,6 +22,12 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+app.locals({
+  redirectDelay:     config.general.redirectDelay,
+  sales_site_name:   config.general.name,
+  sales_site_domain: config.general.salesBaseUrl,
+});
+
 app.get('/', function (req, res) {
   res.render('index');
 });

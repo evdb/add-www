@@ -24,6 +24,12 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+app.locals({
+  redirectDelay:     config.general.redirectDelay,
+  sales_site_name:   config.general.name,
+  sales_site_domain: config.general.salesBaseUrl,
+});
+
 app.all('*', function (req, res) {
 
   var host = req.get('Host');
@@ -32,9 +38,6 @@ app.all('*', function (req, res) {
   res.locals({
     to_domain:         'www.' + host,
     from_domain:       req.host, // strip port number
-    redirect_delay:    config.general.redirect_delay,
-    sales_site_name:   config.sales_app.name,
-    sales_site_domain: config.sales_app.baseUrl,
   });
 
   // Check that we are not in what appears to be a redirection loop

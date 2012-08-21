@@ -12,13 +12,13 @@ connect(
   connect.logger({
     format: ':status :method http://:req[Host]:url :res[content-length] (:response-time ms)'
   }),
-  connect.vhost( config.sales_app.host, sales_app ),
+  connect.vhost( config.general.salesHost, sales_app ),
   redirector_app
 )
 .listen(config.server.port);
 
 console.log(
   "Running: http://%s:%s",
-  config.sales_app.host,
+  config.general.salesHost,
   config.server.port
 );

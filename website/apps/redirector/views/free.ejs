@@ -10,7 +10,7 @@
 		</h1>
 
 		<h2>
-		    Redirecting <span id="countdown">in <%= redirect_delay %> seconds</span>.
+		    Redirecting <span id="countdown">in <%= redirectDelay %> seconds</span>.
 		</h2>
 
         <p>
@@ -23,7 +23,7 @@
 
         <script type="text/javascript">
 
-            var timeRemaining = <%= redirect_delay %>;
+            var timeRemaining = <%= redirectDelay %>;
             var intervalId = setInterval(
                 function () {
                     timeRemaining--;
