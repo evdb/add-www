@@ -30,3 +30,9 @@ a {
     color: #ff9900;
     text-decoration: none;
 }
+
+.mono {
+  font-family: Courier, monospace;
+  background: #fff6ef;
+  padding: 0 0.2em;
+}

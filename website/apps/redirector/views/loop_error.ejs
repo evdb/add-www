@@ -7,9 +7,11 @@
 
 		<h1><%= title %></h1>
 
-        <p>To prevent you sitting in an infinite loop we will not redirect you to <a href="http://<%= to_domain %>/">http://<%= to_domain %>/</a>. </p>
+        <p>It does not make sense to redirect a url that already starts with <span class="mono">www.</span> to one that starts with <span class="mono">www.www.</span>.</p>
+    
+        <p>So to prevent you sitting in a likely infinite loop we are not automatically redirecting you to <a class="mono" href="http://<%= to_domain %>/">http://<%= to_domain %>/</a>. </p>
 
-        <p>You are probably seeing this error because your DNS configuration is incorrect - see <a id="domain_status" href="http://<%= sales_site_domain %>/domain/<%= from_domain %>">our <%= from_domain %> domain status page for more information</a> </p>
+        <p>You are probably seeing this error because your DNS configuration is incorrect - see <a id="domain_status" href="http://<%= sales_site_domain %>/domain/<%= from_domain %>">our <span class="mono"><%= from_domain %></span> domain status page</a> for more information.</p>
 
         <p>Redirection service provided by <a href="http://<%= sales_site_domain %>/"><%= sales_site_name %></a>. </p>
 
