@@ -7,7 +7,7 @@ module.exports = {
   },
   sales_app: {
     name:     'add-www.com',
-    host:     'www.127-0-0-1.org.uk',
-    baseUrl: 'www.127-0-0-1.org.uk:3000',
+    host:     'www.127.0.0.1.xip.io',
+    baseUrl: 'www.127.0.0.1.xip.io:3000',
   },
 };
