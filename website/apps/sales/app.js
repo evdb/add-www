@@ -23,9 +23,7 @@ app.configure('development', function(){
 });
 
 app.locals({
-  redirectDelay:     config.general.redirectDelay,
-  sales_site_name:   config.general.name,
-  sales_site_domain: config.general.salesBaseUrl,
+  configGeneral: config.general,
 });
 
 app.get('/', function (req, res) {
