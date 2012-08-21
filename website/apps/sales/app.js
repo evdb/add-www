@@ -14,8 +14,8 @@ app.configure(function () {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.bodyParser());
-  app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use(app.router);
 });
 
 app.configure('development', function(){
@@ -28,4 +28,10 @@ app.locals({
 
 app.get('/', function (req, res) {
   res.render('index');
+});
+
+app.get('*', function (req, res) {
+  res
+    .status(404)
+    .render('error_404');
 });

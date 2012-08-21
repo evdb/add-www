@@ -1,7 +1,7 @@
 require 'watir_test_case'
 require 'pry'
 
-class Redirection < WatirTestCase
+class RedirectionSite < WatirTestCase
 
   def test_free_redirection
     non_www_url = make_url
