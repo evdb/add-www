@@ -39,7 +39,10 @@ app.all('*', function (req, res) {
 
   // Check that we are not in what appears to be a redirection loop
   if ( /^www\./.test( req.host) ) {
-    return res.render('loop_error');
+    res
+      .status(404)
+      .render('loop_error');
+    return;
   }
 
   res.render('free');
