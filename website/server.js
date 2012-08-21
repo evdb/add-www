@@ -9,6 +9,9 @@ var connect        = require('connect'),
     redirector_app = require('./apps/redirector').app;
 
 connect(
+  connect.logger({
+    format: ':status :method http://:req[Host]:url :res[content-length] (:response-time ms)'
+  }),
   connect.vhost( config.sales_app.host, sales_app ),
   redirector_app
 )

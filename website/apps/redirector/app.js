@@ -15,7 +15,6 @@ var app
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
