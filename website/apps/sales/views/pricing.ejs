@@ -1,0 +1,81 @@
+<%
+    var page_title = 'Pricing';
+%>
+
+<% include header %>
+
+<h1>Pricing.</h1>
+
+<p>We have two levels - 'free' and 'instant'.</p>
+
+
+<h2>Free Redirection</h2>
+
+<p>This is the default. We'll direct any traffic to your 'www' homepage. Users will see a page explaining that they are being redirected.</p>
+
+
+<h2>Instant Redirection</h2>
+
+<p>Available for $<%= configGeneral.annualInstantRedirectPrice.USD%> per domain per year.</p>
+
+<p>We will redirect users to your website instantly using a '301' header - which means that search engines will correctly update their links.</p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Free</th>
+            <th>Instant</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Annual cost per domain</th>
+            <td>Free</td>
+            <td>$<%= configGeneral.annualInstantRedirectPrice.USD%></td>
+        </tr>
+        <tr>
+            <th>DNS config required</th>
+            <td>Change one entry to our IP address</td>
+            <td>Change one entry to our IP address</td>
+        </tr>
+        <tr>
+            <th>Other config required</th>
+            <td>None</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <th>Interstitial page</th>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <th>Redirect delay</th>
+            <td><%= configGeneral.redirectDelay %> seconds</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <th>Redirect type</th>
+            <td>meta refresh</td>
+            <td>301 HTTP status code</td>
+        </tr>
+        <tr>
+            <th>Path and Query</th>
+            <td>No - redirects go to homepage</td>
+            <td>Yes - user will go to any page on the site</td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<% include footer %>

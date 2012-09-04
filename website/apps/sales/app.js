@@ -30,9 +30,9 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
-app.get('/faq', function (req, res) {
-  res.render('faq');
-});
+// Various static pages
+app.get('/faq',     function (req, res) { res.render('faq');     });
+app.get('/pricing', function (req, res) { res.render('pricing'); });
 
 app.get('*', function (req, res) {
   res

@@ -32,6 +32,31 @@ h1, h2, p {
   margin-top: 1em;
 }
 
+table {
+  
+  max-width: 50%;
+  
+  th {
+    font-weight: bold;
+  }
+
+  thead {
+    th {
+      text-align: left;
+    }
+  }
+
+  tbody {
+    th {
+      text-align: right;
+    }
+  }
+
+  td, th {
+    padding: 0.5em;
+  }
+}
+
 .tt {
   font-weight: bold;
   font-family: Monaco, Courier, monospace;

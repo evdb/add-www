@@ -84,6 +84,22 @@ h1, h2, p {
   margin-top: 1em;
 }
 
+table {
+  max-width: 50%;
+}
+table th {
+  font-weight: bold;
+}
+table thead th {
+  text-align: left;
+}
+table tbody th {
+  text-align: right;
+}
+table td, table th {
+  padding: 0.5em;
+}
+
 .tt {
   font-weight: bold;
   font-family: Monaco, Courier, monospace;
