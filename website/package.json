@@ -10,9 +10,11 @@
     "ejs":          ">= 0.8.2",
     "connect":      ">= 2.4.3",
     "config":       ">= 0.4.16",
-    "async":        ">= 0.1.22"
+    "async":        ">= 0.1.22",
+    "underscore":   ""
   },
   "devDependencies": {
-    "supervisor": "*"
+    "supervisor": "*",
+    "mocha":      ">= 1.4.2"
   }
 }
