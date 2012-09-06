@@ -36,7 +36,9 @@ describe('Domains', function () {
 
     it('should handle bad entries', function () {
       var tests = {
-        '': '',
+        '':               '',
+        '   foo.com  ':   'foo.com',
+        '   foo . com  ': 'foo.com',
       };
       _.each(tests, function (expected, input) {
         assert.equal( domains.cleanup(input), expected, input );

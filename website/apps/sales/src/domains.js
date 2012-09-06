@@ -3,6 +3,9 @@ var url = require('url');
 
 module.exports.cleanup = function (input) {  
 
+  // get rid of whitespace
+  input = input.replace(/\s+/g, '');
+
   input = input.toLowerCase();
 
   // parse things that look like urls
