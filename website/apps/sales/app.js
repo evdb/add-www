@@ -7,7 +7,8 @@ var express    = require('express'),
     path       = require('path'),
     config     = require('config'),
     async      = require('async'),
-    dns        = require('dns');
+    dns        = require('dns'),
+    domains    = require('./src/domains');
   
 
 var app = module.exports = express();
@@ -39,9 +40,11 @@ app.get('/pricing', function (req, res) { res.render('pricing'); });
 app.get('/domain/:domain', function(req,res,next) {
   var domain = req.param('domain');
 
+  var clean_domain = domains.cleanup(domain);
+
   // clean up the domain
-  if ( /^www\./.test( domain ) ) {
-    return res.redirect( '/domain/' + domain.replace(/^www\./, '') );
+  if ( domain != clean_domain ) {
+    return res.redirect( '/domain/' + clean_domain );
   }
 
   var error_trap = function (cb) {
@@ -78,7 +81,7 @@ app.get('/domain/:domain', function(req,res,next) {
 });
 
 app.get('/domain', function ( req, res ) {
-  var q = req.param('q');
+  var q = domains.cleanup(req.param('q'));
   if (!q) return res.redirect('/');
   return res.redirect('/domain/' + q );
 });
