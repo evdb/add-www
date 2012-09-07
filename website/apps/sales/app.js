@@ -6,8 +6,6 @@
 var express    = require('express'),
     path       = require('path'),
     config     = require('config'),
-    async      = require('async'),
-    dns        = require('dns'),
     domains    = require('./src/domains');
   
 
@@ -47,36 +45,13 @@ app.get('/domain/:domain', function(req,res,next) {
     return res.redirect( '/domain/' + clean_domain );
   }
 
-  var error_trap = function (cb) {
-    return function (err, result) {
-      if (err) console.log( err );
-      cb( null, result || [] );
-    };
-  };
-
-  async.parallel(
-    {
-      root_ip_address: function (cb) {
-        dns.resolve4(domain, error_trap(cb) );
-      },
-      www_cname: function (cb) {
-        dns.resolveCname('www.' + domain, error_trap(cb) );
-      },
-      www_ip_address: function (cb) {
-        dns.resolve4('www.' + domain, error_trap(cb) );
-      }
-    },
+  domains.get_details(
+    domain,
     function (err, results) {
       if (err) return next(err);
-
-      res.locals(results);
-      res.locals({ domain: domain });
-
-      console.log( res.locals );
-
+      res.locals( results );
       res.render( 'domain' );
-    }
-  );
+    });
 
 });
 
