@@ -56,6 +56,7 @@ table {
 body {
   color: #333333;
   font-family: Arial;
+  background: #ffefd6;
 }
 
 a {
@@ -65,7 +66,6 @@ a {
 menu li {
   display: inline;
   list-style: none;
-  padding: 0 0.5em;
 }
 
 h1, h2 {
@@ -105,8 +105,12 @@ table td, table th {
   font-family: Monaco, Courier, monospace;
 }
 
+header {
+  margin: 0 auto;
+  max-width: 60em;
+  padding: 0.5em 1em;
+}
 header #logo {
-  padding: 1em;
   float: left;
 }
 header #logo a {
@@ -118,31 +122,44 @@ header #logo a span.tld {
   font-size: 50%;
 }
 header #domain-search {
-  padding: 1em;
   float: right;
+  margin-left: 2em;
+}
+header #domain-search input {
+  border-color: #ff9900;
 }
 header menu {
-  clear: both;
-  padding: 0.5em 1em;
-  background: #ffefd6;
-  border-bottom: 1px solid #ffcc80;
-  border-top: 1px solid #ffcc80;
+  float: right;
+  margin-top: 0.25em;
 }
 header menu li {
-  padding: 0 1em 0 0;
+  padding: 0;
+  padding-left: 1em;
+}
+header br {
+  clear: both;
 }
 
 #content {
+  background-color: white;
+  border-top: 2px solid #ffcc80;
+  border-bottom: 1px solid #ffcc80;
+}
+#content #content_inner {
+  margin: 0 auto;
+  max-width: 60em;
   padding: 1em;
 }
 
 footer {
-  padding: 1em;
-  background: #ffefd6;
-  border: 1px solid #ffcc80;
-  border-width: 1px 0;
+  margin: 0 auto;
+  max-width: 60em;
+  padding-top: 1em;
   font-size: 80%;
   text-align: center;
+}
+footer li {
+  padding: 0 0.5em;
 }
 
 div.result-box {
@@ -161,8 +178,8 @@ div.result-box h2 {
 }
 
 .warning {
-  border-color: #cc6500;
-  background-color: #ffe5cc;
+  border-color: #999900;
+  background-color: #ffff99;
 }
 
 .error {

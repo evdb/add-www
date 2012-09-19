@@ -3,10 +3,18 @@
 @import "reset";
 @import "colours";
 
+@mixin set_width {
+  margin: 0 auto;
+  max-width: 60em;  
+}
+
 body {
     color: $text_colour;    
     font-family: Arial;
+    background: $primary_colour_very_light;
 }
+
+
 
 a {
     color: $primary_colour;
@@ -16,8 +24,6 @@ menu {
   li {
     display: inline;
     list-style: none;
-    padding: 0 0.5em;
-    
   }
 }
 
@@ -64,8 +70,10 @@ table {
 
 header {
   
+  @include set_width;
+  padding: 0.5em 1em;
+
   #logo {
-    padding: 1em;
     float: left;
 
     a {
@@ -80,37 +88,50 @@ header {
   }
   
   #domain-search {
-    padding: 1em;
     float: right;
+    margin-left: 2em;
+    input {
+      border-color: $primary_colour;
+    }
   }
 
   menu {
-    clear: both;
-    padding: 0.5em 1em;
-    background: $primary_colour_very_light;
-    border-bottom: 1px solid $primary_colour_light;
-    border-top: 1px solid $primary_colour_light;
+    float: right;
+    margin-top: 0.25em;
 
     li {
-      padding: 0 1em 0 0;
+      padding: 0;
+      padding-left: 1em;
     }
+  }
+  
+  br {
+    clear: both;
   }
   
 }
 
 #content {
-  padding: 1em;
+  background-color: $content_background;
+  border-top:    2px solid $primary_colour_light;
+  border-bottom: 1px solid $primary_colour_light;
+  
+  #content_inner {
+    @include set_width;
+    padding: 1em;
+  }
 }
 
 footer {
+  @include set_width;
   
-  padding: 1em;
-  background: $primary_colour_very_light;
-  border: 1px solid $primary_colour_light;
-  border-width: 1px 0;
-
+  padding-top: 1em;
   font-size: 80%;
   text-align: center;
+  
+  li {
+    padding: 0 0.5em;
+  }
 
 }
 
