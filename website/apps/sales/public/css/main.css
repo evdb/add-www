@@ -144,3 +144,28 @@ footer {
   font-size: 80%;
   text-align: center;
 }
+
+div.result-box {
+  border-width: 1px 4px;
+  border-style: solid;
+  padding: 1em 1em 1em 40px;
+  margin: 1em 0;
+}
+div.result-box h2 {
+  margin: 0;
+}
+
+.ok {
+  border-color: #00cc00;
+  background-color: #ccffcc;
+}
+
+.warning {
+  border-color: #cc6500;
+  background-color: #ffe5cc;
+}
+
+.error {
+  border-color: #cc0000;
+  background-color: #ffcccc;
+}

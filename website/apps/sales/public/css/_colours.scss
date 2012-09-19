@@ -8,3 +8,16 @@ $primary_colour:            #f90;
 $primary_colour_dark:       darken( $primary_colour, 5% );
 $primary_colour_light:      lighten($primary_colour, 25%);
 $primary_colour_very_light: lighten($primary_colour, 42%);
+
+$ok_base_colour:            #0f0;
+$ok_background_colour:      lighten($ok_base_colour, 40%);
+$ok_border_colour:          darken($ok_base_colour,  10%);
+
+$warning_base_colour:          #ff7e00;
+$warning_background_colour:    lighten($warning_base_colour, 40%);
+$warning_border_colour:        darken($warning_base_colour,  10%);
+
+$error_base_colour:         #f00;
+$error_background_colour:   lighten($error_base_colour, 40%);
+$error_border_colour:       darken($error_base_colour,  10%);
+

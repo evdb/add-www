@@ -113,3 +113,31 @@ footer {
   text-align: center;
 
 }
+
+
+div.result-box {
+    border-width: 1px 4px;
+    border-style: solid;
+    padding: 1em 1em 1em 40px;
+    margin: 1em 0;
+//    border-radius: 1em;
+
+    h2 {
+      margin: 0;
+    }
+}
+
+.ok {
+  border-color:     $ok_border_colour;
+  background-color: $ok_background_colour;
+}
+
+.warning {
+  border-color:     $warning_border_colour;
+  background-color: $warning_background_colour;
+}
+
+.error {
+  border-color:     $error_border_colour;
+  background-color: $error_background_colour;
+}
