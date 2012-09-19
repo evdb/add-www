@@ -45,15 +45,9 @@ module.exports.get_details = function (domain, done) {
       },
       www_ip_address: function (cb) {
         dns.resolve4('www.' + domain, error_trap(cb) );
-      }
+      },
+      domain: function (cb) { cb(null, domain); }
     },
-    function (err, results) {
-
-      results.domain = domain;
-
-      console.log( results );
-
-      done(err, results);
-    }
+    done
   );
 }
