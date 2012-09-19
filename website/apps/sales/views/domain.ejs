@@ -12,7 +12,7 @@
 
 
 <div class="result-box ok">
-    <h2>Heading of test carried out</h2>
+    <h2>OK - Something went well</h2>
 
     <p>Some text that describes the result of the test being carried out.</p>
 
@@ -20,13 +20,49 @@
 </div>
 
 <div class="result-box warning">
-    This is good
+    <h2>Warning - something is not so good</h2>
+
+    <p>This is good</p>
 </div>
 
 <div class="result-box error">
-    This is good
+    <h2>Error - something is really bad</h2>
+
+    <p>This is good</p>
 </div>
 
+<pre>
+    
+# origin ip address
 
+not set: error - visitors will see the ugly domain not found page in their
+browsers. Instructions on how to change the DNS record.
+
+set to an IP that is not ours: warning - users will be sent to a server but you
+need to remember to change the DNS record every time the server's IP address
+changes. Instructions on how to change the DNS record.
+
+our IP address: ok - users will be redirected to your www page.
+
+# www ip address
+
+not set: error - as above
+
+our ip address: error - users will be in a redirection loop
+
+not our IP address: ok - users will reach a server
+ 
+# domain paid status
+
+not paid: warning - users will get redirected but they'll see the interstitial
+page
+
+paid but expiring soon: warning - users will get redirected to www instantly but
+you need to renew soon to keep it that way. (perhaps make this a worning inside
+the ok box??)
+
+paid: ok - users will be redirected straight away to the www server.
+   
+</pre>
 
 <% include footer %>
