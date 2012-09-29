@@ -11,6 +11,16 @@
 <p>www_ip_address: <%= www_ip_address %></p>
 
 
+<%
+    var result = {
+        status: "ok",
+        title: "This is the title",
+        body: "This is the body",
+    };
+%>
+
+<% include result-box %>
+
 <div class="result-box ok">
     <h2>OK - Something went well</h2>
 
@@ -33,7 +43,7 @@
 
 <pre>
     
-# origin ip address
+<h1>origin ip address</h1>
 
 not set: error - visitors will see the ugly domain not found page in their
 browsers. Instructions on how to change the DNS record.
@@ -44,7 +54,7 @@ changes. Instructions on how to change the DNS record.
 
 our IP address: ok - users will be redirected to your www page.
 
-# www ip address
+<h1>www ip address</h1>
 
 not set: error - as above
 
@@ -52,7 +62,7 @@ our ip address: error - users will be in a redirection loop
 
 not our IP address: ok - users will reach a server
  
-# domain paid status
+<h1>domain paid status</h1>
 
 not paid: warning - users will get redirected but they'll see the interstitial
 page
