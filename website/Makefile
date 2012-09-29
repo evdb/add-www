@@ -37,8 +37,11 @@ optipng:
 	find public -name '*.png' | xargs optipng --clobber -o4
 
 
-test: node-modules test-browser
+test: node-modules test-sales-app test-browser
 	echo "ALL TESTS PASSED"
+
+test-sales-app:
+	cd apps/sales; mocha --reporter list
 
 test-browser: css
 	# $(START_TEST_SERVER)
