@@ -6,62 +6,100 @@
 
 <h1><%= domain %></h1>
 
-<p>root_ip_address: <%= root_ip_address %></p>
-<p>www_cname: <%= www_cname %></p>
-<p>www_ip_address: <%= www_ip_address %></p>
 
 
-<%
-    var result = {
-        status: "ok",
-        title: "This is the title",
-        body: "This is the body",
-    };
-%>
-
-<% include result-box %>
-
-<div class="result-box ok">
-    <h2>OK - Something went well</h2>
-
-    <p>Some text that describes the result of the test being carried out.</p>
-
-    <p>This is some more text…</p>
-</div>
-
-<div class="result-box warning">
-    <h2>Warning - something is not so good</h2>
-
-    <p>This is good</p>
-</div>
-
-<div class="result-box error">
-    <h2>Error - something is really bad</h2>
-
-    <p>This is good</p>
-</div>
 
 <pre>
+    root_ip_addresses: <%= root_ip_addresses %>
+    root_ip_status:  <%= root_ip_status %>
+    www_ip_addresses:  <%= www_ip_addresses %>
+    www_ip_status:   <%= www_ip_status %>
     
-<h1>origin ip address</h1>
+</pre>
 
-not set: error - visitors will see the ugly domain not found page in their
-browsers. Instructions on how to change the DNS record.
+<!--
+    <div class="result-box ok">
+        <h2>OK - Something went well</h2>
+    
+        <p>Some text that describes the result of the test being carried out.</p>
+    
+        <p>This is some more text…</p>
+    </div>
+    
+    <div class="result-box warning">
+        <h2>Warning - something is not so good</h2>
+    
+        <p>This is good</p>
+    </div>
+    
+    <div class="result-box error">
+        <h2>Error - something is really bad</h2>
+    
+        <p>This is good</p>
+    </div>
+-->
 
-set to an IP that is not ours: warning - users will be sent to a server but you
-need to remember to change the DNS record every time the server's IP address
-changes. Instructions on how to change the DNS record.
+<% if (root_ip_status == 'does_not_resolve') { %>
 
-our IP address: ok - users will be redirected to your www page.
+<div class="result-box error">
+    <h2>Error - "<%= domain %>" does not resolve!</h2>
 
-<h1>www ip address</h1>
+    <p>This means that if people type <%= domain %> into the address bar of their browsers they'll just see the browser error page. At best they'll correct the address and be annoyed, at worst they'll abandon their attempt to get to your site.</p>
 
-not set: error - as above
+    <p>You should set up your DNS so that '<%= domain %>' resolves to '<%= configGeneral.redirector_ip_address %>'.</p>
+    
+    <p><a href="/domain/<%= domain %>/dns_help">Full instructions FIXME</a> for changing your DNS.</p>
+</div>
+    
+<% } else if (root_ip_status == 'not_our_ip') { %>
+    <div class="result-box warning">
+        <h2>Warning - "<%= domain %>" is not pointing at our servers.</h2>
+    
+        <p>This might not be a problem. It is now your responsibility to ensure that the <%= root_ip_addresses.length == 1 ? 'server' : 'servers' %> listening on <%= root_ip_addresses.join(' and ') %> <%= root_ip_addresses.length == 1 ? 'is' : 'are' %> correctly configured to serve content to your users, or to redirect them to www.<%= domain %>.</p>
 
-our ip address: error - users will be in a redirection loop
+        <p>Better is to let our server redirect all your <%= domain %> traffic to www.<%= domain %> - just use our IP address of <%= configGeneral.redirector_ip_address %>.</p>
 
-not our IP address: ok - users will reach a server
- 
+        <p><a href="/domain/<%= domain %>/dns_help">Full instructions FIXME</a> for changing your DNS.</p>
+    </div>
+<% } else if (root_ip_status == 'is_our_ip') { %>
+    <div class="result-box ok">
+        <h2>OK - <%= domain %> is pointing to our server.</h2>
+    
+        <p>This means that any traffic to <%= domain %> will be redirected to www.<%= domain %>. You don't need to worry about loosing traffic or maintaining a server to redirect them. Search engines will only index your site once.</p>
+    </div>
+<% } else { %>
+    <% console.log("ERROR - got unknown state: ", root_ip_status )%>
+<% } %>
+    
+
+<% if (www_ip_status == 'does_not_resolve') { %>
+
+    <div class="result-box error">
+        <h2>Error - "www.<%= domain %>" does not resolve!</h2>
+    
+        <p>This means that if people type www.<%= domain %> into the address bar of their browsers they'll just see the browser error page.</p>
+    
+        <p>You should fix this by changing your DNS settings so that "www.<%= domain %>" resolves to the name or IP address of the server hosting your website.</p>
+    
+    </div>
+    
+<% } else if (www_ip_status == 'not_our_ip') { %>
+    <!-- Nothing to report to user here -->
+<% } else if (www_ip_status == 'is_our_ip') { %>
+
+    <div class="result-box error">
+        <h2>ERROR - www.<%= domain %> is pointing to our server.</h2>
+    
+        <p>Anyone going to www.<%= domain %> will see our redirection error page. This is because it makes no sense to redirect people from www.<%= domain %> to <strong>www.</strong>www.<%= domain %>.</p>
+
+        <p>You should fix this by changing your DNS settings so that "www.<%= domain %>" resolves to the name or IP address of the server hosting your website.</p>
+
+    </div>
+
+<% } else { %>
+    <% console.log("ERROR - got unknown state: ", root_ip_status )%>
+<% } %>
+    
 <h1>domain paid status</h1>
 
 not paid: warning - users will get redirected but they'll see the interstitial
@@ -73,6 +111,5 @@ the ok box??)
 
 paid: ok - users will be redirected straight away to the www server.
    
-</pre>
 
 <% include footer %>

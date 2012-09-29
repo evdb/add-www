@@ -39,13 +39,13 @@ module.exports.get_details = function (domain, done) {
 
   async.parallel(
     {
-      root_ip_address: function (cb) {
+      root_ip_addresses: function (cb) {
         dns.resolve4(domain, error_trap(cb) );
       },
-      www_cname: function (cb) {
-        dns.resolveCname('www.' + domain, error_trap(cb) );
-      },
-      www_ip_address: function (cb) {
+      // www_cname: function (cb) {
+      //   dns.resolveCname('www.' + domain, error_trap(cb) );
+      // },
+      www_ip_addresses: function (cb) {
         dns.resolve4('www.' + domain, error_trap(cb) );
       },
       domain: function (cb) { cb(null, domain); }
@@ -86,8 +86,8 @@ module.exports.report = function ( details ) {
 
   }
 
-  result.root_ip_status = test_ips(details.root_ip_address);
-  result.www_ip_status  = test_ips(details.www_ip_address);
+  result.root_ip_status = test_ips(details.root_ip_addresses);
+  result.www_ip_status  = test_ips(details.www_ip_addresses);
 
   return result;
 }

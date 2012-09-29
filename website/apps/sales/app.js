@@ -50,6 +50,7 @@ app.get('/domain/:domain', function(req,res,next) {
     function (err, results) {
       if (err) return next(err);
       res.locals( results );
+      res.locals( domains.report(results) );
       res.render( 'domain' );
     });
 

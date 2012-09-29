@@ -56,8 +56,8 @@ describe('Domains', function () {
       var tests = [
         {
           input: {
-            root_ip_address: [],
-            www_ip_address:  [],
+            root_ip_addresses: [],
+            www_ip_addresses:  [],
           },
           expected: {
             root_ip_status:   'does_not_resolve',
@@ -66,8 +66,8 @@ describe('Domains', function () {
         },
         {
           input: {
-            root_ip_address: [our_ip],
-            www_ip_address:  [our_ip],
+            root_ip_addresses: [our_ip],
+            www_ip_addresses:  [our_ip],
           },
           expected: {
             root_ip_status:   'is_our_ip',
@@ -76,8 +76,8 @@ describe('Domains', function () {
         },
         {
           input: {
-            root_ip_address: ['1.2.3.4'],
-            www_ip_address:  ['1.2.3.4'],
+            root_ip_addresses: ['1.2.3.4'],
+            www_ip_addresses:  ['1.2.3.4'],
           },
           expected: {
             root_ip_status:   'not_our_ip',
@@ -86,8 +86,8 @@ describe('Domains', function () {
         },
         {
           input: {
-            root_ip_address: ['1.2.3.4', our_ip],
-            www_ip_address:  ['1.2.3.4', our_ip],
+            root_ip_addresses: ['1.2.3.4', our_ip],
+            www_ip_addresses:  ['1.2.3.4', our_ip],
           },
           expected: {
             root_ip_status:   'not_our_ip',

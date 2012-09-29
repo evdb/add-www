@@ -67,6 +67,10 @@ table {
   font-family: Monaco, Courier, monospace;
 }
 
+strong {
+  font-weight: bold;
+}
+
 header {
   
   @include set_width;
