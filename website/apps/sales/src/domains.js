@@ -1,6 +1,8 @@
 var url        = require('url'),
     async      = require('async'),
-    dns        = require('dns');
+    dns        = require('dns'),
+    _          = require('underscore'),
+    config     = require('config');
 
 
 module.exports.cleanup = function (input) {  
@@ -50,4 +52,42 @@ module.exports.get_details = function (domain, done) {
     },
     done
   );
+}
+
+/*
+  These are the errors:
+
+  does_not_resolve
+
+  not_our_ip
+  is_our_ip
+
+  not_paid
+  paid_but_expires_soon
+  paid
+
+*/
+
+module.exports.report = function ( details ) {
+
+  var result = {};
+  var our_ip = config.general.redirector_ip_address;
+  
+  function dont_match_our_ip (ip) {
+    return ip != our_ip;
+  }
+
+  function test_ips(ips) {
+    if (!ips.length) {
+      return 'does_not_resolve';
+    }
+        
+    return _.any(ips, dont_match_our_ip) ? 'not_our_ip' : 'is_our_ip';
+
+  }
+
+  result.root_ip_status = test_ips(details.root_ip_address);
+  result.www_ip_status  = test_ips(details.www_ip_address);
+
+  return result;
 }

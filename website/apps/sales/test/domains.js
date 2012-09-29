@@ -1,6 +1,7 @@
 var assert      = require('assert'),
     domains     = require('../src/domains'),
-    _           = require('underscore');
+    _           = require('underscore'),
+    config      = require('config');
 
 
 describe('Domains', function () {
@@ -45,5 +46,59 @@ describe('Domains', function () {
       });
     });
 
+  });
+  
+  describe('report', function () {
+    it('should correctly identify messages to show', function () {
+
+      var our_ip = config.general.redirector_ip_address;
+
+      var tests = [
+        {
+          input: {
+            root_ip_address: [],
+            www_ip_address:  [],
+          },
+          expected: {
+            root_ip_status:   'does_not_resolve',
+            www_ip_status:    'does_not_resolve',
+          }
+        },
+        {
+          input: {
+            root_ip_address: [our_ip],
+            www_ip_address:  [our_ip],
+          },
+          expected: {
+            root_ip_status:   'is_our_ip',
+            www_ip_status:    'is_our_ip',
+          }
+        },
+        {
+          input: {
+            root_ip_address: ['1.2.3.4'],
+            www_ip_address:  ['1.2.3.4'],
+          },
+          expected: {
+            root_ip_status:   'not_our_ip',
+            www_ip_status:    'not_our_ip',
+          }
+        },
+        {
+          input: {
+            root_ip_address: ['1.2.3.4', our_ip],
+            www_ip_address:  ['1.2.3.4', our_ip],
+          },
+          expected: {
+            root_ip_status:   'not_our_ip',
+            www_ip_status:    'not_our_ip',
+          }
+        },
+      ];
+
+      _.each(tests, function (test) {
+        assert.deepEqual( domains.report(test.input), test.expected );
+      });
+    });
   });
 });
