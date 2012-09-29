@@ -48,6 +48,10 @@ module.exports.get_details = function (domain, done) {
       www_ip_addresses: function (cb) {
         dns.resolve4('www.' + domain, error_trap(cb) );
       },
+      redirect_type: function (cb) {
+        // free, instant, instant_expires_soon
+        cb(null, 'free');
+      },
       domain: function (cb) { cb(null, domain); }
     },
     done

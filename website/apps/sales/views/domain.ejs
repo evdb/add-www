@@ -11,9 +11,9 @@
 
 <pre>
     root_ip_addresses: <%= root_ip_addresses %>
-    root_ip_status:  <%= root_ip_status %>
+    root_ip_status:    <%= root_ip_status %>
     www_ip_addresses:  <%= www_ip_addresses %>
-    www_ip_status:   <%= www_ip_status %>
+    www_ip_status:     <%= www_ip_status %>
     
 </pre>
 
@@ -65,10 +65,12 @@
     <div class="result-box ok">
         <h2>OK - <%= domain %> is pointing to our server.</h2>
     
-        <p>This means that any traffic to <%= domain %> will be redirected to www.<%= domain %>. You don't need to worry about loosing traffic or maintaining a server to redirect them. Search engines will only index your site once.</p>
+        <p>Traffic to <%= domain %> will be redirected to www.<%= domain %>.</p>
+        
+        <p>You don't need to worry about losing traffic or maintaining a server to redirect them.</p>
     </div>
 <% } else { %>
-    <% console.log("ERROR - got unknown state: ", root_ip_status )%>
+    <% console.log("ERROR - got unknown root_ip_status %s for domain %s.", root_ip_status, domain )%>
 <% } %>
     
 
@@ -97,19 +99,49 @@
     </div>
 
 <% } else { %>
-    <% console.log("ERROR - got unknown state: ", root_ip_status )%>
+    <% console.log("ERROR - got unknown www_ip_status %s for domain %s.", www_ip_status, domain )%>
 <% } %>
     
-<h1>domain paid status</h1>
 
-not paid: warning - users will get redirected but they'll see the interstitial
-page
 
-paid but expiring soon: warning - users will get redirected to www instantly but
-you need to renew soon to keep it that way. (perhaps make this a worning inside
-the ok box??)
 
-paid: ok - users will be redirected straight away to the www server.
-   
+<% if (redirect_type == 'instant') { %>
+    <div class="result-box ok">
+
+        <h2>OK - Instant redirection enabled</h2>
+    
+        <p>Visitors to <%= domain %> will be instantly redirected to www.<%= domain %>.</p>
+        
+        <p>Search engines will know that www.<%= domain %> is the website that they should index.</p>
+        
+        <p>All is well.</p>
+
+    </div>
+<% } else if (redirect_type == 'instant_expires_soon') { %>
+    <div class="result-box warning">
+
+        <h2>Note - your instant redirection is about to expire!</h2>
+    
+        <p>Visitors to <%= domain %> are currently being instantly redirected to www.<%= domain %>. But your subscription is about to expire and your visitors will see the redirection notice.</p>
+        
+        <p><a href="FIXME">Renew now</a> to keep your visitors happy.</p>
+
+    </div>
+<% } else if (redirect_type == 'free') { %>
+<%  if (root_ip_status == 'is_our_ip') { %>
+    <div class="result-box warning">
+        <h2>Note - visitors will see the interstitial page.</h2>
+    
+        <p>Visitors to <%= domain %> will be redirected to www.<%= domain %> but first they'll see a notice that they are being redirected.</p>
+
+        <p>They'll also only be redirected to the homepage, not to other pages on your site.</p>
+        
+        <p><a href="FIXME">Upgrade to instant redirection</a> now to skip the redirection notice.</p>
+
+    </div>
+<%   } %>
+<% } else { %>
+    <% console.log("ERROR - got unknown redirect_type %s for domain %s.", redirect_type, domain )%>
+<% } %>
 
 <% include footer %>

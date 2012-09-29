@@ -99,6 +99,10 @@ table td, table th {
   padding: 0.5em;
 }
 
+pre {
+  font-family: Monaco, Courier, monospace;
+}
+
 .tt {
   font-weight: bold;
   font-family: Monaco, Courier, monospace;
